@@ -1,12 +1,19 @@
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import authService from './authService';
 import './Login.css';
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    console.log("Login Data:", data);
-    alert('Login successful! Check console for details.');
+    const success = authService.authenticate(data.username, data.password);
+    if (success) {
+      navigate('/dashboard');
+    } else {
+      alert('Invalid username or password!');
+    }
   };
 
   return (
@@ -25,21 +32,17 @@ const Login = () => {
 
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
-              <label htmlFor="email">Email Address</label>
+              <label htmlFor="username">Username</label>
               <input 
-                id="email"
-                type="email" 
-                placeholder="you@example.com" 
-                className={errors.email ? 'error' : ''}
-                {...register("email", { 
-                  required: "Email is required",
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                    message: "Invalid email address"
-                  }
+                id="username"
+                type="text" 
+                placeholder="Enter username (e.g. admin or student)" 
+                className={errors.username ? 'error' : ''}
+                {...register("username", { 
+                  required: "Username is required"
                 })} 
               />
-              {errors.email && <span className="error-message">{errors.email.message as string}</span>}
+              {errors.username && <span className="error-message">{errors.username.message as string}</span>}
             </div>
 
             <div className="form-group">

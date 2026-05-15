@@ -1,5 +1,3 @@
-declare module "loginApp/Login";
-declare module "dashboardApp/Dashboard";
 declare module "loginApp/AuthService" {
   const authService: {
     authenticate: (username: string, password: string) => boolean;

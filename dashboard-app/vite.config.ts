@@ -8,10 +8,13 @@ export default defineConfig({
     federation({
       name: 'dashboard_app',
       filename: 'remoteEntry.js',
+      remotes: {
+        loginApp: 'http://localhost:5001/assets/remoteEntry.js',
+      },
       exposes: {
         './Dashboard': './src/Dashboard.tsx',
       },
-      shared: ['react', 'react-dom']
+      shared: ['react', 'react-dom', 'react-router-dom']
     })
   ],
   build: {

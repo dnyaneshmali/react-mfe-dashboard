@@ -11,7 +11,7 @@ export default defineConfig({
         loginApp: 'http://localhost:5001/assets/remoteEntry.js',
         dashboardApp: 'http://localhost:5002/assets/remoteEntry.js',
       },
-      shared: ['react', 'react-dom']
+      shared: ['react', 'react-dom', 'react-router-dom']
     })
   ],
   build: {

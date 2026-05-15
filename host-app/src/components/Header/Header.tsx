@@ -1,20 +1,28 @@
+import { Link } from 'react-router-dom';
+import authService from 'loginApp/AuthService';
 import './Header.css';
 
 const Header = () => {
+  const isAuthenticated = authService.isAuthenticated();
+
+  const handleLogout = () => {
+    authService.logout();
+  };
+
   return (
     <header className="lms-header">
       <div className="header-container">
-        <div className="logo">
+        <Link to="/" className="logo" style={{ textDecoration: 'none' }}>
           <span className="logo-icon">🎓</span>
           <h1>EduNexus</h1>
-        </div>
+        </Link>
 
         <nav className="main-nav">
           <ul>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#instructors">Instructors</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#pricing">Pricing</a></li>
+            <li><Link to="/courses">Courses</Link></li>
+            <li><Link to="/instructors">Instructors</Link></li>
+            <li><Link to="/resources">Resources</Link></li>
+            <li><Link to="/pricing">Pricing</Link></li>
           </ul>
         </nav>
 
@@ -22,8 +30,14 @@ const Header = () => {
           <button className="btn-search" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
           </button>
-          <a href="#login" className="btn-login">Log In</a>
-          <a href="#signup" className="btn-signup">Sign Up</a>
+          {!isAuthenticated ? (
+            <>
+              <Link to="/login" className="btn-login">Log In</Link>
+              <Link to="/signup" className="btn-signup">Sign Up</Link>
+            </>
+          ) : (
+            <button onClick={handleLogout} className="btn-signup">Log Out</button>
+          )}
         </div>
       </div>
     </header>
@@ -31,3 +45,4 @@ const Header = () => {
 };
 
 export default Header;
+
