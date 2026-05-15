@@ -108,7 +108,7 @@ const Dashboard = () => {
               <div className="activity-dot"></div>
               <div className="activity-text">
                 <p>Joined <strong>Advanced Typescript</strong> community</p>
-                <small>3 days ago</small>
+                <small>4 days ago</small>
               </div>
             </div>
           </div>
