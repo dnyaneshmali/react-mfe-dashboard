@@ -11,7 +11,7 @@ function App() {
     <div className="App" style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#f9fafb' }}>
       <Header />
       
-      <main style={{ flex: 1, padding: '40px 20px', maxWidth: '1200px', margin: '0 auto', width: '100%', boxSizing: 'border-box' }}>
+      <main style={{ flex: 1, padding: '40px 20px', width: '100%', boxSizing: 'border-box' }}>
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
           <h2 style={{ fontSize: '32px', color: '#111827', marginBottom: '10px' }}>Welcome to EduNexus Portal</h2>
           <p style={{ color: '#6b7280', fontSize: '18px' }}>Access your personalized learning dashboard and modules.</p>
