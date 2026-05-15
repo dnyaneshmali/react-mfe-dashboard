@@ -28,17 +28,17 @@ function App() {
           <div className="App-content">
             <Suspense fallback={<div className="Suspense-fallback">Loading...</div>}>
               <Routes>
-                <Route 
-                  path="/login" 
-                  element={!isAuthenticated ? <LoginApp /> : <Navigate to="/dashboard" />} 
+                <Route
+                  path="/login"
+                  element={!isAuthenticated ? <LoginApp /> : <Navigate to="/dashboard" />}
                 />
-                <Route 
-                  path="/dashboard" 
-                  element={isAuthenticated ? <DashboardApp /> : <Navigate to="/login" />} 
+                <Route
+                  path="/dashboard"
+                  element={isAuthenticated ? <DashboardApp /> : <Navigate to="/login" />}
                 />
-                <Route 
-                  path="/" 
-                  element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />} 
+                <Route
+                  path="/"
+                  element={<Navigate to={isAuthenticated ? "/dashboard" : "/login"} />}
                 />
               </Routes>
             </Suspense>
