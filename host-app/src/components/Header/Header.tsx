@@ -6,9 +6,9 @@ const Header = () => {
       <div className="header-container">
         <div className="logo">
           <span className="logo-icon">🎓</span>
-          <h1>EduNexus MFE</h1>
+          <h1>EduNexus</h1>
         </div>
-        
+
         <nav className="main-nav">
           <ul>
             <li><a href="#courses">Courses</a></li>
