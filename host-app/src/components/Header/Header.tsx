@@ -7,6 +7,7 @@ const Header = () => {
 
   const handleLogout = () => {
     authService.logout();
+    window.location.href = '/login'; // Force redirect to login on logout
   };
 
   return (
@@ -19,10 +20,21 @@ const Header = () => {
 
         <nav className="main-nav">
           <ul>
-            <li><Link to="/courses">Courses</Link></li>
-            <li><Link to="/instructors">Instructors</Link></li>
-            <li><Link to="/resources">Resources</Link></li>
-            <li><Link to="/pricing">Pricing</Link></li>
+            {!isAuthenticated ? (
+              <>
+                <li><Link to="/courses">Courses</Link></li>
+                <li><Link to="/instructors">Instructors</Link></li>
+                <li><Link to="/resources">Resources</Link></li>
+                <li><Link to="/pricing">Pricing</Link></li>
+              </>
+            ) : (
+              <>
+                <li><Link to="/dashboard">Dashboard</Link></li>
+                <li><Link to="/my-learning">My Learning</Link></li>
+                <li><Link to="/assignments">Assignments</Link></li>
+                <li><Link to="/messages">Messages</Link></li>
+              </>
+            )}
           </ul>
         </nav>
 
